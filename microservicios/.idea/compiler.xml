@@ -2,7 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Annotation profile for tarifasFestivos" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gateway" />
+        <module name="eureka" />
+        <module name="configServer" />
+      </profile>
+      <profile name="Annotation profile for descuentosFrecuencia" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -13,17 +21,9 @@
         <module name="rack" />
         <module name="tarifas" />
         <module name="reservas" />
-        <module name="reportes" />
         <module name="descuentosFrecuencia" />
+        <module name="reportes" />
         <module name="descuentosGrupo" />
-      </profile>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="gateway" />
-        <module name="eureka" />
-        <module name="configServer" />
       </profile>
     </annotationProcessing>
   </component>
