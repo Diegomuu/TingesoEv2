@@ -11,7 +11,7 @@
         <module name="eureka" />
         <module name="configServer" />
       </profile>
-      <profile name="Annotation profile for descuentosFrecuencia" enabled="true">
+      <profile name="Annotation profile for tarifasFestivos" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -22,8 +22,8 @@
         <module name="rack" />
         <module name="tarifas" />
         <module name="reservas" />
-        <module name="descuentosFrecuencia" />
         <module name="reportes" />
+        <module name="descuentosFrecuencia" />
         <module name="descuentosGrupo" />
       </profile>
     </annotationProcessing>
