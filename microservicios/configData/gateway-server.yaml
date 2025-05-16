@@ -27,4 +27,7 @@ spring:
           uri: lb://tarifas
           predicates:
             - Path=/tarifas/**
+          filters:
+            - RewritePath=/tarifas/(?<segment>.*), /${segment}
+
 
