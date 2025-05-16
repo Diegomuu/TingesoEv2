@@ -1,10 +1,11 @@
-package controller;
+package com.diegomuu.karting.tarifas.controller;
 
-import entity.TarifaEntity;
+import com.diegomuu.karting.tarifas.entity.TarifaEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.TarifaService;
+import com.diegomuu.karting.tarifas.services.TarifaService;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("tarifas")
 public class TarifaController {
 
+    @Autowired
     public TarifaService tarifaService;
 
     @GetMapping("/read")

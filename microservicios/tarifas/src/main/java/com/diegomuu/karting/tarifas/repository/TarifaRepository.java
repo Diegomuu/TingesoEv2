@@ -1,6 +1,6 @@
-package repository;
+package com.diegomuu.karting.tarifas.repository;
 
-import entity.TarifaEntity;
+import com.diegomuu.karting.tarifas.entity.TarifaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan(basePackages = "com.diegomuu.karting.tarifas.entity")
+@EnableJpaRepositories
 
 public class TarifasApplication {
 

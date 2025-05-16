@@ -1,4 +1,4 @@
-package entity;
+package com.diegomuu.karting.tarifas.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

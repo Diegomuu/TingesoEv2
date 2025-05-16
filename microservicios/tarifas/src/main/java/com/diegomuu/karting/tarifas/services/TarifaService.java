@@ -1,9 +1,9 @@
-package services;
+package com.diegomuu.karting.tarifas.services;
 
-import entity.TarifaEntity;
+import com.diegomuu.karting.tarifas.entity.TarifaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.TarifaRepository;
+import com.diegomuu.karting.tarifas.repository.TarifaRepository;
 
 import java.util.List;
 
