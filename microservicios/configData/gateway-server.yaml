@@ -26,4 +26,5 @@ spring:
         - id: tarifas
           uri: lb://tarifas
           predicates:
-            - Path=/tarifas/**
+            - Path=tarifas/**
+

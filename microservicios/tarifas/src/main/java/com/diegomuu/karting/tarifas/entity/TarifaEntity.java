@@ -1,12 +1,9 @@
 package com.diegomuu.karting.tarifas.entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "tarifa")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TarifaEntity {
@@ -24,5 +21,36 @@ public class TarifaEntity {
     @Column(nullable = false)
     private double precio;  // Ej: 15000 (CLP)
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getVueltas() {
+        return vueltas;
+    }
+
+    public void setVueltas(int vueltas) {
+        this.vueltas = vueltas;
+    }
+
+    public int getTiempoMaxMinutos() {
+        return tiempoMaxMinutos;
+    }
+
+    public void setTiempoMaxMinutos(int tiempoMaxMinutos) {
+        this.tiempoMaxMinutos = tiempoMaxMinutos;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }
 
