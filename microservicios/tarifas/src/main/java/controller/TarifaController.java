@@ -1,6 +1,6 @@
 package controller;
 
-import entity.TatifaEntity;
+import entity.TarifaEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ public class TarifaController {
     public TarifaService tarifaService;
 
     @GetMapping("/read")
-    public List<TatifaEntity> listarTatifas() {
+    public List<TarifaEntity> listarTatifas() {
         return tarifaService.getAllTarifas();
     }
 
     // Create (POST)
     @PostMapping("/create")
-    public ResponseEntity<TatifaEntity> createTarifa(@RequestBody TatifaEntity tarifa) {
-        TatifaEntity nuevaTarifa = tarifaService.createTarifa(tarifa);
+    public ResponseEntity<TarifaEntity> createTarifa(@RequestBody TarifaEntity tarifa) {
+        TarifaEntity nuevaTarifa = tarifaService.createTarifa(tarifa);
         return new ResponseEntity<>(nuevaTarifa, HttpStatus.CREATED);
     }
 

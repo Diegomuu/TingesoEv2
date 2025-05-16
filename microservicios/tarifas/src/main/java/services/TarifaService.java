@@ -1,6 +1,6 @@
 package services;
 
-import entity.TatifaEntity;
+import entity.TarifaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.TarifaRepository;
@@ -14,12 +14,12 @@ public class TarifaService {
     private TarifaRepository tarifaRepository;
 
     // Read del crud
-    public List<TatifaEntity> getAllTarifas() {
+    public List<TarifaEntity> getAllTarifas() {
         return tarifaRepository.findAll();
     }
 
     // Create del crud
-    public TatifaEntity createTarifa(TatifaEntity tarifa) {
+    public TarifaEntity createTarifa(TarifaEntity tarifa) {
         return tarifaRepository.save(tarifa);
     }
 }

@@ -1,8 +1,8 @@
 package repository;
 
-import entity.TatifaEntity;
+import entity.TarifaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TarifaRepository extends JpaRepository<TatifaEntity, Long> {
+public interface TarifaRepository extends JpaRepository<TarifaEntity, Long> {
 
 }
