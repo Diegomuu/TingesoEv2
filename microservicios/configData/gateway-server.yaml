@@ -14,8 +14,6 @@ spring:
       discovery:
         locator:
           enabled: true
-        default-filters:
-          - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
       globalcors:
         cors-configurations:
           '[/**]':
@@ -27,7 +25,4 @@ spring:
           uri: lb://tarifas
           predicates:
             - Path=/tarifas/**
-          filters:
-            - RewritePath=/tarifas/(?<segment>.*), /${segment}
-
 
