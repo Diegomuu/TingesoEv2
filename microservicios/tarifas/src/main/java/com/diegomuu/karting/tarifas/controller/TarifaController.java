@@ -10,7 +10,7 @@ import com.diegomuu.karting.tarifas.services.TarifaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("tarifas")
+@RequestMapping("/tarifas")
 public class TarifaController {
 
     @Autowired
