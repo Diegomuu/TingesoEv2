@@ -22,7 +22,7 @@ spring:
             allowedHeaders: "*"
       routes:
         - id: tarifas
-          uri: lb://TARIFAS
+          uri: lb://tarifas
           predicates:
             - Path=/tarifas/**
 
