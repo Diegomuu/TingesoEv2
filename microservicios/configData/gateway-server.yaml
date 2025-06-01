@@ -26,3 +26,8 @@ spring:
           predicates:
             - Path=/tarifas/**
 
+        - id: tarifasFestivos
+          uri: lb://tarifasFestivos
+          predicates:
+            - Path=/festivos/**
+
