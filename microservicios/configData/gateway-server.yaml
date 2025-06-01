@@ -31,3 +31,8 @@ spring:
           predicates:
             - Path=/festivos/**
 
+        - id: descuentosGrupo
+          uri: lb//descuentosGrupo
+          predicates:
+            - Path=/descuentogrupo/**
+
