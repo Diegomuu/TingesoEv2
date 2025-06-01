@@ -2,6 +2,7 @@ package com.diegomuu.karting.descuentosGrupo.controller;
 
 import com.diegomuu.karting.descuentosGrupo.entity.DescuentosGrupoEntity;
 import com.diegomuu.karting.descuentosGrupo.services.DescuentosGrupoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/descuentogrupo")
 public class DescuentosGrupoController {
 
+    @Autowired
     private DescuentosGrupoService descuentosGrupoService;
 
     @PostMapping("/crear")
