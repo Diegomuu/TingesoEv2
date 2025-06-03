@@ -47,7 +47,7 @@ spring:
             - Path=/clientes/**
 
         - id: reservas
-          uri: lb://reserva
+          uri: lb://reservas
           predicates:
             - Path=/reservas/**
 
