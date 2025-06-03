@@ -5,6 +5,8 @@ import com.diegomuu.clientes.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ClienteService {
     @Autowired
@@ -17,5 +19,10 @@ public class ClienteService {
     public void registrarCliente(ClienteEntity cliente) {
         clienteRepository.save(cliente);
     }
+
+    public Optional<ClienteEntity> buscarClientePorNombre(String nombre) {
+        return clienteRepository.findByNombreIgnoreCase(nombre);
+    }
+
 }
 
