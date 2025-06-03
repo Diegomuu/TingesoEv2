@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "cliente")
 @NoArgsConstructor
@@ -13,7 +15,7 @@ public class ClienteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private boolean cumpleanos;
+    private LocalDate cumpleanos;
     private int visitasMensuales;
 
     public Long getId() {
@@ -32,11 +34,11 @@ public class ClienteEntity {
         this.nombre = nombre;
     }
 
-    public boolean isCumpleanos() {
+    public LocalDate getCumpleanos() {
         return cumpleanos;
     }
 
-    public void setCumpleanos(boolean cumpleanos) {
+    public void setCumpleanos(LocalDate cumpleanos) {
         this.cumpleanos = cumpleanos;
     }
 

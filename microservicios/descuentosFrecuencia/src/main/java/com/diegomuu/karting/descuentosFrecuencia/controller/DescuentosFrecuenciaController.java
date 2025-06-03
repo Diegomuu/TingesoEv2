@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/descuentofrecuencia")
+@CrossOrigin
 public class DescuentosFrecuenciaController {
     @Autowired
     private DescuentosFrecuenciaService descuentoFrecuenciaService;

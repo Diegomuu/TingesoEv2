@@ -9,6 +9,7 @@ import com.diegomuu.karting.tarifas.repository.TarifaRepository;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,29 +38,30 @@ public class TarifaService {
     }
 
 
-    public Double calcularTarifa(DatosReserva datos) {
+    public List<Double> calcularTarifa(DatosReserva datos) {
         Double tarifaBase = obtenerTarifaBase(datos.getVueltas());
-        Double totalDescuento = 0.0;
-        LocalDate fechaReserva = datos.getFechaReserva();  // Fecha enviada por el frontend
+        LocalDate fechaReserva = datos.getFechaReserva();
+        List<Double> tarifasFinales = new ArrayList<>();
 
         for (ClienteDTO cliente : datos.getClientes()) {
             Double descuentoFrecuencia = restTemplate.getForObject("http://descuentosFrecuencia/descuentofrecuencia/" + cliente.getId(), Double.class);
             Double descuentoGrupo = restTemplate.getForObject("http://descuentosGrupo/descuentogrupo/" + datos.getCantidadPersonas(), Double.class);
 
-            // ✅ **Comparación de cumpleaños con la fecha enviada**
+            // ✅ Comparación de cumpleaños con la fecha enviada
             Double descuentoCumpleanios = cliente.getFechaNacimiento().getMonth().equals(fechaReserva.getMonth()) &&
                     cliente.getFechaNacimiento().getDayOfMonth() == fechaReserva.getDayOfMonth() ? 0.50 : 0.0;
 
-            // ✅ **Consulta de descuentos por fecha festiva**
+            // ✅ Consulta de descuentos por fecha festiva
             Double descuentoFestivo = restTemplate.getForObject("http://tarifasFestivos/festivos/" + fechaReserva, Double.class);
 
-            // ✅ **Determinar el mejor descuento para cada cliente**
+            // ✅ Determinar el mejor descuento para cada cliente
             Double mejorDescuento = Math.max(descuentoFrecuencia, Math.max(descuentoCumpleanios, Math.max(descuentoGrupo, descuentoFestivo)));
-            totalDescuento += mejorDescuento;
+
+            // ✅ Calcular la tarifa final individual
+            Double tarifaFinalCliente = tarifaBase * (1 - mejorDescuento);
+            tarifasFinales.add(tarifaFinalCliente);
         }
 
-        // ✅ **Calcular tarifa final promediando los descuentos del grupo**
-        Double tarifaFinal = tarifaBase * (1 - (totalDescuento / datos.getClientes().size()));
-        return tarifaFinal;
+        return tarifasFinales;
     }
 }

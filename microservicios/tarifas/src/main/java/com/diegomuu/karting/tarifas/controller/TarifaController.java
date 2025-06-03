@@ -1,6 +1,7 @@
 package com.diegomuu.karting.tarifas.controller;
 
 import com.diegomuu.karting.tarifas.entity.TarifaEntity;
+import com.diegomuu.karting.tarifas.model.DatosReserva;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,5 +28,13 @@ public class TarifaController {
         TarifaEntity nuevaTarifa = tarifaService.createTarifa(tarifa);
         return new ResponseEntity<>(nuevaTarifa, HttpStatus.CREATED);
     }
+
+    @PostMapping("/calcular")
+    public ResponseEntity<List<Double>> calcularTarifa(@RequestBody DatosReserva datos) {
+        List<Double> tarifasFinales = tarifaService.calcularTarifa(datos);
+        return ResponseEntity.ok(tarifasFinales);
+    }
+
+
 
 }

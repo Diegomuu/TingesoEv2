@@ -4,12 +4,14 @@ package com.diegomuu.karting.descuentosFrecuencia.model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cliente {
 
     private String nombre;
-    private boolean cumpleanos;
+    private LocalDate cumpleanos;
     private int visitasMensuales;
 
     public String getNombre() {
@@ -20,11 +22,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public boolean isCumpleanos() {
+    public LocalDate isCumpleanos() {
         return cumpleanos;
     }
 
-    public void setCumpleanos(boolean cumpleanos) {
+    public void setCumpleanos(LocalDate cumpleanos) {
         this.cumpleanos = cumpleanos;
     }
 

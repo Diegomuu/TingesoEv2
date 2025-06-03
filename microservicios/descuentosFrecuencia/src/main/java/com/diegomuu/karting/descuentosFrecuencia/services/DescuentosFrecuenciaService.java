@@ -21,7 +21,10 @@ public class DescuentosFrecuenciaService {
             return 0.0; // Si el cliente no existe o su cantidad de visitas es desconocida, no hay descuento.
         }
 
-        return descuentoFrecuenciaRepository.findTopByMinVisitasLessThanEqualAndMaxVisitasGreaterThanEqual(cliente.getVisitasMensuales())
+        int visitas = cliente.getVisitasMensuales();
+
+        // Ajustar la consulta para que pase `visitas` como el rango de búsqueda
+        return descuentoFrecuenciaRepository.findTopByMinVisitasLessThanEqualAndMaxVisitasGreaterThanEqual(visitas, visitas)
                 .map(DescuentosFrecuenciaEntity::getDescuento)
                 .orElse(0.0);
     }
