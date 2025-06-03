@@ -18,7 +18,7 @@ public class ClienteController {
         return cliente != null ? ResponseEntity.ok(cliente) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/cliente")
+    @PostMapping("/crear")
     public ResponseEntity<String> registrarCliente(@RequestBody ClienteEntity cliente) {
         clienteService.registrarCliente(cliente);
         return ResponseEntity.ok("Cliente registrado: " + cliente.getNombre());
