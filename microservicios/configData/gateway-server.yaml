@@ -51,3 +51,8 @@ spring:
           predicates:
             - Path=/reservas/**
 
+        - id: rack
+          uri: lb://rack
+          predicates:
+            - Path=/rack/**
+

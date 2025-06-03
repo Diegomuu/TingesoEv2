@@ -5,8 +5,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class RackSemanalDTO {
     private String dia;           // "Lunes", "Martes", etc.
     private LocalDate fecha;      // La fecha específica
