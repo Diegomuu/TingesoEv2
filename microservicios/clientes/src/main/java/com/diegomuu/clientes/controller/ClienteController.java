@@ -7,9 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/clientes")
-@CrossOrigin(origins = "*")
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;
@@ -31,6 +32,17 @@ public class ClienteController {
         return clienteService.buscarClientePorNombre(nombre)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @PostMapping("/incrementar-visitas")
+    public ResponseEntity<?> incrementarVisitasMensuales(@RequestBody List<Long> clienteIds) {
+        try {
+            clienteService.incrementarVisitasMensuales(clienteIds);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al incrementar visitas: " + e.getMessage());
+        }
     }
 
 }
