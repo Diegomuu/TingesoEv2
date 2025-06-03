@@ -113,6 +113,34 @@
   background-color: #ffebee;
 }
 
+.rack-cell.fuera-horario {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  color: #999;
+  position: relative;
+}
+
+.rack-cell.fuera-horario::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+}
+
+.rack-cell.fuera-horario:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .rack-cell:hover {
   transform: scale(1.02);
   z-index: 1;

@@ -81,10 +81,24 @@ const RackSemanal = () => {
 
   // Función para verificar si hay una reserva en un horario específico
   const getReserva = (dia, hora) => {
-    return reservas.find(r => 
-      formatDate(new Date(r.fecha)) === formatDate(dia.fecha) && 
-      r.horaReserva === hora
-    );
+    // Convertir la hora a número para comparación
+    const horaNum = parseInt(hora.split(':')[0]);
+    
+    // Verificar que la hora esté dentro del rango permitido (10:00-19:00)
+    if (horaNum < 10 || horaNum >= 20) {
+      return null;
+    }
+
+    return reservas.find(r => {
+      // Convertir la hora de la reserva a número
+      const horaReserva = parseInt(r.horaReserva.split(':')[0]);
+      
+      // Solo retornar la reserva si está dentro del horario de atención
+      return formatDate(new Date(r.fecha)) === formatDate(dia.fecha) && 
+             horaReserva === horaNum &&
+             horaReserva >= 10 && 
+             horaReserva < 20;
+    });
   };
 
   return (
@@ -160,16 +174,21 @@ const RackSemanal = () => {
                     <div className="hora-cell">{hora}</div>
                     {diasSemana.map(dia => {
                       const reserva = getReserva(dia, hora);
+                      const horaNum = parseInt(hora.split(':')[0]);
+                      const fueraHorario = horaNum < 10 || horaNum >= 20;
+
                       return (
                         <div 
                           key={`${dia.nombre}-${hora}`} 
-                          className={`rack-cell ${reserva ? 'reservado' : 'disponible'}`}
-                          title={reserva ? 
-                            `${reserva.nombreReservante} - ${reserva.cantidadPersonas} personas - ${reserva.vueltas} vueltas` : 
-                            `Disponible: ${dia.nombre} ${formatDate(dia.fecha)} - ${hora}`
+                          className={`rack-cell ${fueraHorario ? 'fuera-horario' : reserva ? 'reservado' : 'disponible'}`}
+                          title={fueraHorario ? 
+                            'Fuera del horario de atención (10:00-19:00)' :
+                            reserva ? 
+                              `${reserva.nombreReservante} - ${reserva.cantidadPersonas} personas - ${reserva.vueltas} vueltas` : 
+                              `Disponible: ${dia.nombre} ${formatDate(dia.fecha)} - ${hora}`
                           }
                         >
-                          {reserva && (
+                          {!fueraHorario && reserva && (
                             <div className="reserva-info">
                               <p className="reserva-nombre">{reserva.nombreReservante}</p>
                               <p className="reserva-detalles">
