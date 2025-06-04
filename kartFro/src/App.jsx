@@ -5,6 +5,7 @@ import RegisterPilot from './components/RegisterPilot';
 import Tarifas from './components/Tarifas';
 import Pagos from './components/pagos';
 import RackSemanal from './components/RackSemanal';
+import Reportes from './components/Reportes';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <Route path="/tarifas" element={<Tarifas />} />
         <Route path="/pagos" element={<Pagos />} />
         <Route path="/rack-semanal" element={<RackSemanal />} />
-
+        <Route path="/reportes" element={<Reportes />} />
       </Routes>
     </Router>
   );
