@@ -27,7 +27,7 @@ spec:
             - name: SPRING_CLOUD_CONFIG_FAIL_FAST
               value: "true"
             - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-              value: "http://eureka-service:8761/eureka/"
+              value: "http://eureka-server:8761/eureka/"
             - name: EUREKA_CLIENT_REGISTER_WITH_EUREKA
               value: "true"
             - name: EUREKA_CLIENT_FETCH_REGISTRY
@@ -65,3 +65,6 @@ spec:
       port: 8080
       targetPort: 8080
   type: LoadBalancer
+  env:
+    - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+      value: "http://eureka-server:8761/eureka/"
